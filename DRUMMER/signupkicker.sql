@@ -1,5 +1,8 @@
-/*Drummer signs up another drummer in advance of 2019-10-15
-Each drummer can have up to 20 referrals */
+/*Drummer signs up another drummer in advance of 2019-11-15
+Each drummer can have up to 20 referrals
+Referred drummer must complete their profile
+$40
+*/
 /*SEGMENT QUERY*/
 with referrals as (
   select

@@ -6,14 +6,14 @@ $40
 
 /*Athena QUERY*/
 
-with removed as (
-  select
-    distinct pk
-  from
-    dynamodb_athena.drummerdetail
-  where
-    eventname = 'REMOVE'
-),
+  with removed as (
+    select
+      distinct pk
+    from
+      dynamodb_athena.drummerdetail
+    where
+      eventname = 'REMOVE'
+  ),
 row_prep as (
   select
     dd.referralid as drummer_id,
@@ -63,3 +63,49 @@ from
 where
   rn = 1
   and signup_time between '2019-09-11T00:00:00.000Z' and '2019-10-15T00:00:00.000Z'
+  and drummer_email not in ('steve@drum.io',
+  'kamal.steve@gmail.com',
+  'vikramraju89@gmail.com',
+  'vikram@drum.io',
+  'kelly.solberg@drum.io',
+  'kellysolberg@icloud.com',
+  'kellymeagher7@gmail.com',
+  'kmeagher@rollins.edu',
+  'carmccutchen@gmail.com',
+  'caroline.mccutchen@drum.io',
+  'carolinemccutchen@gatech.edu',
+  'ben.gilbert@drum.io',
+  'bsgilber@gmail.com',
+  'hamcallahan@gmail.com',
+  'heather.callahan@drum.io',
+  'vincemig@gmail.com, vincemig+1@gmail.com, vincent@drum.io',
+  'kathryn.oday@drum.io',
+  'kehonderd@gmail.com',
+  'shopskathryn@gmail.com',
+  'ko@drum.io',
+  'kpetralia@gmail.com, ktpetralia@me.com, kpetralia@kabbage.com, kathryn@atlantachambermusicfestival.com',
+  'troydeus@hotmail.com',
+  'troydeus@yahoo.com',
+  'troydeus@gmail.com',
+  'troy@drum.io',
+  'troydrumtest@yahoo.com',
+  'troybizdrum@yahoo.com',
+  'troybizdrum@gmail.com',
+  'evan.fackler@gmail.com, evan.fackler@drum.io',
+  'varun.murthy@gmail.com',
+  'varun@drum.io',
+  'varun.murthy@drum.io',
+  'varunmurthy.aw@gmail.com',
+  'rob@drum.io',
+  'rob@kabbage.com',
+  'rfrohwein@lavagroup.net',
+  'rfrohwein@kabbage.com',
+  'robfrohwein@gmail.com',
+  'max@drum.io',
+  'mirvine46@gmail.com',
+  'max.irvine99@gmail.com',
+  'max.irvine@gatech.edu',
+  'max@rocketdev.io',
+  'vincemig+1@gmail.com',
+  'vincemig+1@drum.io',
+  'ancleveland@gmail.com')

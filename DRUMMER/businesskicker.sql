@@ -1,9 +1,3 @@
-/*
-- Cash credit offered to Drummer when business publishes first offer
-- Pre-launch total capped at 100 businesses, although businesses have to be verified to meet certain criteria (published to Drummers)
-- Has to be still live on launch day (will be paid out then) */
-
-/*Athena QUERY*/
 with removed AS (
   SELECT
     DISTINCT pk
@@ -69,7 +63,7 @@ businesses AS (
   WHERE
     referralid is NOT null
     AND createdat BETWEEN '2019-09-11T04:00:00.000Z'
-    AND '2019-10-15T00:00:00.000Z'
+    AND '2019-11-04T00:00:00.000Z'
     AND pk NOT IN (
       SELECT
         pk
@@ -114,7 +108,7 @@ offers AS (
     "dynamodb_athena"."offerdetail"
   WHERE
     createdat BETWEEN '2019-09-11T04:00:00.000Z'
-    AND '2019-10-15T00:00:00.000Z'
+    AND '2019-11-04T00:00:00.000Z'
     AND pk NOT IN (
       SELECT
         pk
@@ -161,6 +155,7 @@ SELECT
   oc.pk AS offer_id,
   oc.startedat AS start_ts,
   oc.pausedat AS paused_ts,
+  oc.endedat as ended_ts,
   oc.title,
   oc.status
 FROM
